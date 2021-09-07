@@ -47,6 +47,6 @@ JAVA_OPTS="$JAVA_OPTS -DlogFile.dir=$LOG_FILE_DIR"
 export JAVA_OPTS
 echo "JAVA_OPTS==>"$JAVA_OPTS
 
-nohup $JAVA_HOME/bin/java $JAVA_OPTS -Dfastjson.parser.safeMode=true -cp "./lib/*:./config"  com.cmic.ydrz.personalized.BootApplication --logging.config=$ROOT_HOME/config/logback-spring.xml > /dev/null 2>&1 &
+nohup $JAVA_HOME/bin/java $JAVA_OPTS -Dfastjson.parser.safeMode=true -cp "./lib/*:./config"  com.haiqiang.rpccat.RpcCatApplication --logging.config=$ROOT_HOME/config/logback-spring.xml > /dev/null 2>&1 &
 
 echo now, process is startting on the backend!
