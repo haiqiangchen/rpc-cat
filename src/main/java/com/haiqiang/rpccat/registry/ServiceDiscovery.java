@@ -1,5 +1,6 @@
 package com.haiqiang.rpccat.registry;
 
+import com.haiqiang.rpccat.proxy.ConnectManage;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -16,7 +17,9 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * 服务发现
  *
- * @author HQChan
+ * @author huangyong
+ * @author luxiaoxun
+ * @author chenhaiqiang
  */
 public class ServiceDiscovery {
 
@@ -89,15 +92,15 @@ public class ServiceDiscovery {
             this.dataList = dataList;
 
             logger.debug("Service discovery triggered updating connected server node.");
-//            UpdateConnectedServer();
+            UpdateConnectedServer();
         } catch (KeeperException | InterruptedException e) {
             logger.error("", e);
         }
     }
 
-//    private void UpdateConnectedServer(){
-//        ConnectManage.getInstance().updateConnectedServer(this.dataList);
-//    }
+    private void UpdateConnectedServer(){
+        ConnectManage.getInstance().updateConnectedServer(this.dataList);
+    }
 
     public void stop(){
         if(zookeeper!=null){

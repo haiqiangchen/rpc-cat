@@ -84,10 +84,10 @@ public class BootNetty implements ApplicationContextAware, InitializingBean {
                         @Override
                         public void initChannel(SocketChannel channel) throws Exception {
                             channel.pipeline()
-                                    .addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 0))
-                                    .addLast(new RpcDecoder(RpcRequest.class))
-                                    .addLast(new RpcEncoder(RpcResponse.class))
-                                    .addLast(new RpcHandler(handlerMap));
+                                    .addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 0))//长帧编码器
+                                    .addLast(new RpcDecoder(RpcRequest.class)) //请求消息体
+                                    .addLast(new RpcEncoder(RpcResponse.class)) //返回消息体
+                                    .addLast(new RpcHandler(handlerMap)); //rpc的处理内容和反馈
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)

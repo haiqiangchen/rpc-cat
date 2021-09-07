@@ -21,6 +21,7 @@ public class NettyConfig {
 
     @Bean
     public BootNetty getBootNetty(){
+        //提前注入netty服务器
         ServiceRegistry serviceRegistry=new ServiceRegistry(zookeeper);
         BootNetty bootNetty=new BootNetty(serverUrl,serviceRegistry);
         return bootNetty;
